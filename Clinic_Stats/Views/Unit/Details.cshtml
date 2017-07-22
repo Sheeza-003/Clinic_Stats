@@ -1,0 +1,86 @@
+﻿@model Clinic_Stats.Models.Unit
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Unit</h4>
+    <hr />
+    @*<dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Room)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Room)
+        </dd>
+
+    </dl>*@
+    <table class="table">
+
+        <tr>
+            <th>Department ID</th>
+        </tr>
+        <tr>
+            <td>
+                <text>F00</text>@Html.DisplayFor(model => model.UnitID)
+            </td>
+        </tr>
+        <tr>
+            <th>Department Name</th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Title)
+            </td>
+        </tr>
+
+
+    </table>
+    <br />
+    <h3>Faculty Members</h3>
+    <table class="table">
+        <tr>
+            <th>Profession</th>
+            <th>Name</th>
+            <th>Staff ID:</th>
+
+        </tr>
+        @foreach (var item in Model.Enrollments)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Staff.Profession)
+                </td>
+
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Staff.FirstMidName)
+                    @Html.DisplayFor(modelItem => item.Staff.LastName)
+                </td>
+
+
+                <td>
+                    <text>R00</text>@Html.DisplayFor(modelItem => item.Staff.StaffID)
+                </td>
+            </tr>
+
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UnitID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

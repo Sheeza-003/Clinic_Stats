@@ -1,0 +1,124 @@
+﻿@model Clinic_Stats.Models.Staff
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Staff</h4>
+    <hr />
+    @*<dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstMidName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstMidName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Profession)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Profession)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Shift)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Shift)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnrollmentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnrollmentDate)
+        </dd>
+
+    </dl>*@
+    <table class="table">
+
+        <tr>
+            <th>Department ID</th>
+        </tr>
+        <tr>
+            <td>
+                <text>F00</text>@Html.DisplayFor(model => model.StaffID)
+            </td>
+        </tr>
+        <tr>
+            <th>Name</th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.LastName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.FirstMidName)
+            </td>
+        </tr>
+        <tr>
+            <th>Profession</th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Profession)
+            </td>
+        </tr>
+        <tr>
+            <th>Shift</th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Shift)
+            </td>
+        
+    </table>
+    <br/>
+    <h3>Appointments</h3>
+    <table class="table">
+        <tr>
+            <th>Time/Date</th>
+            <th>Patient Name</th>
+            <th>ID</th>
+
+        </tr>
+        
+@foreach (var item in Model.Enrollments)
+{
+ 
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Patient.EnrollmentDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Patient.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Patient.ID)
+        </td>
+    </tr>
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StaffID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
